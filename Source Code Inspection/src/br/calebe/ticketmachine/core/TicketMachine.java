@@ -11,6 +11,7 @@ import java.util.Iterator;
 public class TicketMachine {
 
     protected int valor;
+    protected int valorTotal;
     protected int saldo;
     protected int[] papelMoeda = {2, 5, 10, 20, 50, 100};
 
@@ -35,6 +36,11 @@ public class TicketMachine {
     public int getSaldo() {
         return saldo;
     }
+    
+    //Retorna o total de venda no dia
+    public int getValorTotal() {
+        return valorTotal;
+    }
 
     public Iterator<Integer> getTroco() {
         return null;
@@ -47,6 +53,8 @@ public class TicketMachine {
         String result = "*****************\n";
         result += "*** R$ " + saldo + ",00 ****\n";
         result += "*****************\n";
+        //Após toda compra de ticket o software incrementa um valor no valorTotal
+        valorTotal += valor;
         return result;
     }
 }
