@@ -18,7 +18,7 @@ public class TicketMachine {
         this.valor = valor;
         this.saldo = 0;
     }
-
+    // Alterei o indice o vetor papelMoeda, para o laço verificar todas as cédulas possiveis
     public void inserir(int quantia) throws PapelMoedaInvalidaException {
         boolean achou = false;
         for (int i = 0; i < papelMoeda.length && !achou; i++) {
