@@ -51,9 +51,11 @@ class Troco {
     class TrocoIterator implements Iterator<PapelMoeda> {
 
         protected Troco troco;
-
+        protected int indice;
+                
         public TrocoIterator(Troco troco) {
             this.troco = troco;
+            this.indice = 0;
         }
 
         @Override
