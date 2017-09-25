@@ -52,7 +52,7 @@ class Troco {
 
         protected Troco troco;
         protected int indice;
-                
+
         public TrocoIterator(Troco troco) {
             this.troco = troco;
             this.indice = 0;
@@ -71,18 +71,16 @@ class Troco {
         @Override
         public PapelMoeda next() {
             PapelMoeda ret = null;
-            for (int i = 6; i >= 0 && ret != null; i++) {
-                if (troco.papeisMoeda[i] != null) {
-                    ret = troco.papeisMoeda[i];
-                    troco.papeisMoeda[i] = null;
-                }
+            if (indice < troco.papeisMoeda.length) {
+                ret = troco.papeisMoeda[indice];
+                troco.papeisMoeda[indice] = null;
             }
             return ret;
         }
 
         @Override
         public void remove() {
-            if (this.indice < troco.papeisMoeda.length){
+            if (this.indice < troco.papeisMoeda.length) {
                 indice += 1;
             }
         }
