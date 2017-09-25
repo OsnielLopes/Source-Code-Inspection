@@ -82,7 +82,9 @@ class Troco {
 
         @Override
         public void remove() {
-            next();
+            if (this.indice < troco.papeisMoeda.length){
+                indice += 1;
+            }
         }
     }
 }
