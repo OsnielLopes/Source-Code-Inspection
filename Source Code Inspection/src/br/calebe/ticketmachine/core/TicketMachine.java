@@ -38,16 +38,14 @@ public class TicketMachine {
     public int getSaldo() {
         return saldo;
     }
-<<<<<<< HEAD
+
     Troco c;
-=======
     
     //Retorna o total de venda no dia
     public int getValorTotal() {
         return valorTotal;
     }
 
->>>>>>> iss3
     public Iterator<Integer> getTroco() {
         return (Iterator<Integer>) new Troco(saldo);
     }
