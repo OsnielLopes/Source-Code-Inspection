@@ -19,9 +19,9 @@ public class Troco {
         papeisMoeda[1] = new PapelMoeda(50,0);
         papeisMoeda[0] = new PapelMoeda(100,0);
         for (PapelMoeda papelMoeda : papeisMoeda) {
-            int quantia = valor % papelMoeda.valor;
+            int quantia = valor / papelMoeda.valor;
             papelMoeda.quantidade = quantia;
-            valor -= quantia + papelMoeda.valor;
+            valor -= quantia * papelMoeda.valor;
         }
     }
 
@@ -36,29 +36,29 @@ public class Troco {
 
         public TrocoIterator(Troco troco) {
             this.troco = troco;
-            this.indice = 0;
+            this.indice = troco.papeisMoeda.length-1;
         }
 
         @Override
         public boolean hasNext() {
-            return indice < papeisMoeda.length;
+            return indice >= 0;
         }
 
         @Override
         public PapelMoeda next() {
             PapelMoeda ret = null;
-            if (indice < papeisMoeda.length) {
+            if (indice >= 0) {
                 ret = troco.papeisMoeda[indice];
                 troco.papeisMoeda[indice] = null;
-                indice++;
+                indice--;
             }
             return ret;
         }
 
         @Override
         public void remove() {
-            if (this.indice < papeisMoeda.length) {
-                indice += 1;
+            if (this.indice >= 0) {
+                indice -= 1;
             }
         }
     }

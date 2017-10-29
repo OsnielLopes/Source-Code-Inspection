@@ -36,6 +36,10 @@ public class TicketMachine {
             throw new PapelMoedaInvalidaException();
         }
     }
+    
+    public int getValor() {
+        return valor;
+    }
 
     public int getSaldo() {
         return saldo;
@@ -47,16 +51,18 @@ public class TicketMachine {
     }
 
     public Troco getTroco() {
-        return new Troco(saldo);
+        Troco troco = new Troco(saldo);
+        saldo = 0;
+        return troco;
     }
 
     public String imprimir() throws SaldoInsuficienteException {
         if (saldo < valor) {
             throw new SaldoInsuficienteException();
         }
-        String result = "*****************\n";
-        result += "*** R$ " + saldo + ",00 ****\n";
-        result += "*****************\n";
+        String result = "***************************\n";
+        result += "**** 1 Ticket R$ " + valor + ",00 ****\n";
+        result += "***************************\n";
         saldo -= valor;
         //Após toda compra de ticket o software incrementa um valor no valorTotal
         valorTotal += valor;
